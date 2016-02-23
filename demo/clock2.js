@@ -92,15 +92,18 @@ function drawNumbersRotated(context) {
     context.fillStyle = "brown";
     context.textBaseline = "middle";
     
+    context.save();
+    
     for (var i = 1; i <= 12; ++i) {
         var location = {};
-        var textSize = context.measureText(i);
         location.x = 0;
         location.y = -radius;
         
         context.rotate(Math.PI / 6);
         context.fillText(i, location.x, location.y);
     }
+    
+    context.restore();
 }
 
 function drawCenter(context) {
