@@ -62,7 +62,7 @@ function drawInnerFrame(context) {
     context.strokeStyle = "orange";
     context.lineWidth = 20;
     context.beginPath();
-    context.arc(0, 0, radius, 0, Math.PI * 2);
+    context.arc(0, 0, radius, 0, 2 * Math.PI);
     context.closePath();
     context.fill();
     context.stroke();
@@ -75,15 +75,18 @@ function drawNumbersRotated(context) {
     context.fillStyle = "brown";
     context.textBaseline = "middle";
     
+    context.save();
+    
     for (var i = 1; i <= 12; ++i) {
         var location = {};
-        var textSize = context.measureText(i);
         location.x = 0;
         location.y = -radius;
         
         context.rotate(Math.PI / 6);
         context.fillText(i, location.x, location.y);
     }
+    
+    context.restore();
 }
 
 function drawCenter(context) {
